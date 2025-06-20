@@ -2,3 +2,8 @@
 <%# every thing inside these <> %% is being interpreted as ruby code, but without = it doesn't display a thing on the screen%>
 <p><strong>Title:</strong> <%= @article.title %></p>
 <p><strong>Description:</strong> <%= @article.description %></p>
+
+
+<p><%= link_to 'Edit', edit_article_path(@article) %></p>
+<p><%= button_to 'Delete', article_path(@article), method: :delete %></p>
+<p><%= link_to 'Go Back', articles_path%></p>

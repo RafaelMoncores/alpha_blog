@@ -30,4 +30,10 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity # Renders the edit template again if save fails
     end
   end
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Article was successfully deleted." # Flash message for successful deletion
+    redirect_to articles_path # Redirects to the index action of articles
+  end
 end
