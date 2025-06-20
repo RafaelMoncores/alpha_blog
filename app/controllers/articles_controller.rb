@@ -33,6 +33,13 @@ class ArticlesController < ApplicationController
     flash[:notice] = "Article was successfully deleted." # Flash message for successful deletion
     redirect_to articles_path # Redirects to the index action of articles
   end
+  def index
+    if params[:search]
+      @articles = Article.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @articles = Article.all
+    end
+  end
   private # Private methods are not accessible outside this controller.
   def set_article
     # This method is used to set the @article instance variable for show, edit, and update actions.

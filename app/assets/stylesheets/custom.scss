@@ -1,0 +1,10 @@
+@import 'variables';
+
+#logo {
+  float: left;
+  font-size: $logo-font-size;
+  color: $logo-color;
+  text-transform: $logo-text-transform;
+  letter-spacing: $logo-letter-spacing;
+  font-weight: $logo-font-weight;
+}
