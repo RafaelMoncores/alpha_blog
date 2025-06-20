@@ -1,0 +1,33 @@
+// app/assets/stylesheets/_variables.scss
+
+// ----------------------------------------------------
+// Cores da Navbar
+// ----------------------------------------------------
+
+// Defina a cor de fundo desejada para a navbar
+$navbar-custom-bg: #343a40; // Seu cinza escuro
+
+// Defina a cor dos links e do brand para navbars "dark"
+// (Estas variáveis são usadas quando a classe `navbar-dark` está no seu HTML)
+$navbar-dark-color: rgba(255, 255, 255, .75); // Cor padrão dos links para navbars escuras
+$navbar-dark-hover-color: #ffffff;          // Cor dos links ao passar o mouse
+$navbar-dark-active-color: #ffffff;         // Cor do link ativo
+
+// Ícone do botão de toggle (hambúrguer) para navbars escuras
+// O Bootstrap usa um SVG com base64. Precisamos inverter o filtro para que ele seja branco
+$navbar-dark-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-dark-toggler-border-color: rgba(255, 255, 255, 0.1); // Borda do botão toggle
+
+
+// Cores do placeholder para inputs dentro da navbar
+// Não há uma variável direta do Bootstrap para isso na navbar, então vamos simular.
+// Para que isso funcione, precisaremos de um pequeno pedaço de SCSS extra no custom.scss,
+// ou você pode definir uma nova variável aqui para usar no custom.scss.
+$navbar-input-placeholder-color: rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------
+// Cores do Tema (reiterando do exemplo anterior, para referência)
+// Se você for usar a cor da sua navbar com classes como `bg-dark` ou `bg-secondary` no HTML,
+// certifique-se de que essas variáveis também estão definidas ou personalizadas.
+// Exemplo: se sua navbar for `<nav class="navbar navbar-expand-lg bg-dark">`
+// $dark: $navbar-custom-bg; // Você pode fazer o $dark do Bootstrap usar sua cor customizada

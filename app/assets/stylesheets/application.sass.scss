@@ -1,5 +1,5 @@
-@import 'bootstrap'; // Importa todos os estilos do Bootstrap
-@import 'custom';   // Importa seus estilos personalizados (DEPOIS do Bootstrap)
+@import 'variables';
+@import 'bootstrap/scss/bootstrap'; // Importa todos os estilos do Bootstrap
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

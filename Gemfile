@@ -18,10 +18,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Gemfile
-gem "dartsass-rails"
-
+gem "cssbundling-rails"
 gem "bootstrap", "~> 5.3" # Use a versão mais recente do Bootstrap 5
-gem "popper_js", "~> 2.11" # Popper.js é uma dependência do Bootstrap 5
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
@@ -61,6 +59,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "foreman"
 end
 
 group :test do
