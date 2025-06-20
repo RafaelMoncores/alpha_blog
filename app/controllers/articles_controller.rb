@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [ :show, :edit, :update, :destroy ]
   def show
-    @article = Article.find(params[:id])
   end
   def index
     @articles = Article.all
@@ -9,10 +9,9 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
   def edit
-    @article = Article.find(params[:id])
   end
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(article_params)
     if @article.save
       flash[:notice] = "Article was successfully created." # Flash message for successful creation
       redirect_to @article # Redirects to the show action of the article
@@ -21,8 +20,7 @@ class ArticlesController < ApplicationController
     end
   end
   def update
-    @article = Article.find(params[:id])
-    @article.update(params.require(:article).permit(:title, :description))
+    @article.update(article_params)
     if @article.save
       flash[:notice] = "Article was successfully updated." # Flash message for successful update
       redirect_to @article# Redirects to the show action of the article
@@ -31,9 +29,17 @@ class ArticlesController < ApplicationController
     end
   end
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Article was successfully deleted." # Flash message for successful deletion
     redirect_to articles_path # Redirects to the index action of articles
+  end
+  private # Private methods are not accessible outside this controller.
+  def set_article
+    # This method is used to set the @article instance variable for show, edit, and update actions.
+    @article = Article.find(params[:id])
+  end
+  def article_params
+    # This method is used to whitelist the parameters for article creation and updating.
+    params.require(:article).permit(:title, :description)
   end
 end
