@@ -1,4 +1,16 @@
+// app/assets/stylesheets/custom.scss
 @import 'variables';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+}
 
 #logo {
   float: left;
@@ -7,4 +19,39 @@
   text-transform: $logo-text-transform;
   letter-spacing: $logo-letter-spacing;
   font-weight: $logo-font-weight;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  // Adicione estas propriedades para centralizar o conteúdo dentro de #page-content
+  display: flex; /* Habilita Flexbox no container de conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  min-height: calc(85vh - 56px - 40px); /* Ajuste para Navbar e Footer (exemplo) */
+                                        /* 56px para altura média da Navbar e 40px para altura média do Footer */
+                                        /* Você pode precisar ajustar esses valores */
+                                        /* OU, se for só centralizar o jumbotron: */
+  padding-top: 25px; /* Mantenha seu espaçamento superior original, se desejar */
+  padding-bottom: 25px; /* Adicione padding inferior para caso o jumbotron seja muito alto */
+}
+
+#jumbotron {
+  background-image: url('jumbo.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  /* Para centralizar o jumbotron em si, você pode usar margin: auto;
+     mas com Flexbox no #page-content, isso geralmente não é necessário. */
+  margin: auto; /* Pode ajudar a centralizar se o jumbotron não ocupar toda a largura */
+}
+
+#sticky-footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }
