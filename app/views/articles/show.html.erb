@@ -1,29 +1,19 @@
 <div class="container mt-5">
+  <h2 class="text-center mb-4"><%= @article.title %></h2>
   <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card shadow-sm">
-        <div class="card-header bg-dark text-white text-center">
-          <h1 class="card-title mb-0">Article Details</h1>
-        </div>
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow-lg mb-5 bg-body-tertiary rounded">
+        <p class="card-header font-italic">
+          by Rafael Monçores
+        </p>
         <div class="card-body">
-          <div class="mb-3">
-            <strong>Title:</strong> <%= @article.title %>
-          </div>
-          <div class="mb-3">
-            <strong>Description:</strong> <%= @article.description %>
-          </div>
-          <% if @article.created_at %>
-            <small class="text-muted d-block mt-3">Created: <%= @article.created_at.strftime("%B %d, %Y at %I:%M %p") %></small>
-          <% end %>
-          <% if @article.updated_at %>
-            <small class="text-muted d-block">Last Updated: <%= @article.updated_at.strftime("%B %d, %Y at %I:%M %p") %></small>
-          <% end %>
+          <div class="card-text"><%= simples_format(@article.description) %></div>
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>
         </div>
-        <%# Adicione as classes d-flex, justify-content-center e flex-wrap %>
-        <div class="card-footer d-flex justify-content-center flex-wrap">
-          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary me-2 mb-2" %>
-          <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger me-2 mb-2" %>
-          <%= link_to 'Go Back to Articles', articles_path, class: "btn btn-outline-secondary mb-2" %>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@article.created_at) %> ago, 
+          edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
         </div>
       </div>
     </div>
