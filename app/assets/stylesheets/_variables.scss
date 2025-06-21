@@ -47,3 +47,16 @@ $logo-color: white;
 $logo-text-transform: uppercase;
 $logo-letter-spacing: -1px;
 $logo-font-weight: bold;
+
+// Define a cor do texto padrão para tabelas escuras
+$table-dark-color: #ffffff; // Branco para o texto
+$table-dark-bg: #343a40;    // Fundo da tabela escura (pode ser a cor da linha ímpar)
+$table-dark-border-color: transparent; // Borda transparente para células
+
+// Cores intercaladas para tabelas escuras
+$table-dark-striped-bg: #212529; // Cor para as linhas listradas (pode ser a cor da linha par)
+$table-dark-hover-bg: #495057;   // Cor de hover para tabelas escuras
+
+// Cor do cabeçalho da tabela escura
+$table-dark-thead-bg: #212529; // Fundo do cabeçalho
+$table-dark-thead-color: #ffffff; // Cor do texto do cabeçalho

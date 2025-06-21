@@ -1,4 +1,21 @@
-<h1>Welcome to about page!</h1>
-
-<p><%= link_to 'Go to Articles list', articles_path%></p>
-<p><%= link_to 'Go to Home page', root_path%></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 text-center">
+      <h1 class="display-4 mb-4">About Alpha Blog</h1>
+      <p class="lead">
+        Welcome to **Alpha Blog**! We are a space dedicated to sharing knowledge, insights, and passions on a variety of topics that move and inspire us.
+      </p>
+      <hr class="my-4">
+      <p>
+        Our mission is to create relevant and engaging content that informs, entertains, and provokes thought. We believe in the power of ideas and the ability to transform the world through information and the exchange of experiences.
+      </p>
+      <p>
+        Here you will find in-depth articles, practical tutorials, opinions, and news about [**insert your blog's main topics here, e.g., technology, lifestyle, cooking, travel, personal development, etc.**]. Our team of writers is always seeking new perspectives to bring you the best possible content.
+      </p>
+      <p>
+        We want to build a vibrant and interactive community. Feel free to explore our posts, leave your comments, and share your own ideas. Your participation is fundamental to the growth of Alpha Blog!
+      </p>
+      <%= link_to 'View Our Articles', articles_path, class: "btn btn-primary btn-lg mt-3" %>
+    </div>
+  </div>
+</div>

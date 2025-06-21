@@ -1,9 +1,31 @@
-<h1>Showing article details</h1>
-<%# every thing inside these <> %% is being interpreted as ruby code, but without = it doesn't display a thing on the screen%>
-<p><strong>Title:</strong> <%= @article.title %></p>
-<p><strong>Description:</strong> <%= @article.description %></p>
-
-
-<p><%= link_to 'Edit', edit_article_path(@article) %></p>
-<p><%= button_to 'Delete', article_path(@article), method: :delete %></p>
-<p><%= link_to 'Go Back', articles_path%></p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white text-center">
+          <h1 class="card-title mb-0">Article Details</h1>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <strong>Title:</strong> <%= @article.title %>
+          </div>
+          <div class="mb-3">
+            <strong>Description:</strong> <%= @article.description %>
+          </div>
+          <% if @article.created_at %>
+            <small class="text-muted d-block mt-3">Created: <%= @article.created_at.strftime("%B %d, %Y at %I:%M %p") %></small>
+          <% end %>
+          <% if @article.updated_at %>
+            <small class="text-muted d-block">Last Updated: <%= @article.updated_at.strftime("%B %d, %Y at %I:%M %p") %></small>
+          <% end %>
+        </div>
+        <%# Adicione as classes d-flex, justify-content-center e flex-wrap %>
+        <div class="card-footer d-flex justify-content-center flex-wrap">
+          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary me-2 mb-2" %>
+          <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger me-2 mb-2" %>
+          <%= link_to 'Go Back to Articles', articles_path, class: "btn btn-outline-secondary mb-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
