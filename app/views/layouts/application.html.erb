@@ -22,9 +22,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render 'layouts/navbar'%>
-    <%= render 'layouts/messages'%>
+  <body class="d-flex flex-column min-vh-100">
+  <%= render 'layouts/navbar' %>
+  <%= render 'layouts/messages' %>
+
+  <main id="page-content">
     <%= yield %>
-  </body>
+  </main>
+
+  <%= render 'layouts/footer' %>
+</body>
 </html>

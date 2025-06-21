@@ -28,13 +28,8 @@ body {
 }
 
 #page-content {
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(85vh - 56px - 40px);
-  padding-top: 25px;
-  padding-bottom: 25px;
+  flex: 1;
+  padding: 2rem 1rem;
 }
 
 #jumbotron {
