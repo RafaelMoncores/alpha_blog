@@ -18,6 +18,12 @@
             <li class="nav-item">
                 <%= link_to "Bloggers", users_path, class: "nav-link"%>
             </li>
+            <li class="nav-item">
+                <%= link_to "Log In", login_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Logout", logout_path, class: "nav-link", method: :delete%>
+            </li>
         </ul>
         </div>
         <form class="d-flex" role="search">
