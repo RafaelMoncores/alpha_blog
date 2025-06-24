@@ -3,5 +3,11 @@
   <div class="justify-content-center text-center mb-4">
     <%= link_to "Create new Article!", new_article_path(@article), class: "btn btn-success btn-lg" %>
   </div>
+  <div class="flickr_pagination">
+    <%= will_paginate @articles, :container => false %>
+  </div>
   <%= render 'article' %>
+  <div class="flickr_pagination mb-5">
+    <%= will_paginate @articles, :container => false %>
+  </div>
 </div>

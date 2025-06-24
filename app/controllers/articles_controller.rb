@@ -1,9 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [ :show, :edit, :update, :destroy ]
+
   def show
   end
+
   def index
-    @articles = Article.all
+    if params[:search]
+      # Se houver busca, pagine os resultados da busca
+      @articles = Article.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(3)
+    else
+      # Caso contrário, pagine todos os artigos
+      @articles = Article.paginate(page: params[:page], per_page: 3)
+    end
   end
   def new
     @article = Article.new
@@ -12,42 +20,33 @@ class ArticlesController < ApplicationController
   end
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = User.first # Cuidado: User.first pode não ser o usuário logado
     if @article.save
-      flash[:notice] = "Article was successfully created." # Flash message for successful creation
-      redirect_to @article # Redirects to the show action of the article
+      flash[:notice] = "Article was successfully created."
+      redirect_to @article
     else
-      render :new, status: :unprocessable_entity # Renders the new template again if save fails
+      render :new, status: :unprocessable_entity
     end
   end
   def update
     @article.update(article_params)
-    if @article.save
-      flash[:notice] = "Article was successfully updated." # Flash message for successful update
-      redirect_to @article# Redirects to the show action of the article
+    if @article.save # .save após .update é redundante a menos que você tenha validações ou callbacks específicos
+      flash[:notice] = "Article was successfully updated."
+      redirect_to @article
     else
-      render :edit, status: :unprocessable_entity # Renders the edit template again if save fails
+      render :edit, status: :unprocessable_entity
     end
   end
   def destroy
     @article.destroy
-    flash[:notice] = "Article was successfully deleted." # Flash message for successful deletion
-    redirect_to articles_path # Redirects to the index action of articles
+    flash[:notice] = "Article was successfully deleted."
+    redirect_to articles_path
   end
-  def index
-    if params[:search]
-      @articles = Article.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @articles = Article.all
-    end
-  end
-  private # Private methods are not accessible outside this controller.
+  private
   def set_article
-    # This method is used to set the @article instance variable for show, edit, and update actions.
     @article = Article.find(params[:id])
   end
   def article_params
-    # This method is used to whitelist the parameters for article creation and updating.
     params.require(:article).permit(:title, :description)
   end
 end
