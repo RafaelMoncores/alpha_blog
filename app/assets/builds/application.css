@@ -1,4 +1,12 @@
 @charset "UTF-8";
+.card-header a {
+  text-decoration: none;
+}
+.card-header a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 /*!
  * Bootstrap  v5.3.7 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
@@ -11854,6 +11862,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.card-header a {
+  text-decoration: none;
+}
+.card-header a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 html,
 body {
   height: 100%;

@@ -60,3 +60,15 @@ $table-dark-hover-bg: #495057;   // Cor de hover para tabelas escuras
 // Cor do cabeçalho da tabela escura
 $table-dark-thead-bg: #212529; // Fundo do cabeçalho
 $table-dark-thead-color: #ffffff; // Cor do texto do cabeçalho
+
+// Estilos para links dentro do cabeçalho do card
+$card-header-link-color: black; // Cor do link
+$card-header-link-hover-color: black; // Cor do link ao passar o mouse (pode ser diferente, se quiser)
+
+.card-header a {
+    text-decoration: none;
+  &:hover {
+    text-decoration: underline; // Adiciona o sublinhado ao passar o mouse
+    color: $card-header-link-hover-color; // Mantém a cor ou altera ao passar o mouse
+  }
+}
