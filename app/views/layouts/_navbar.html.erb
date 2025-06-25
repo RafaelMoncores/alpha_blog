@@ -33,6 +33,9 @@
                         <li>
                             <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
                         </li>
+                        <li>
+                            <%= link_to "Delete your profile", user_path(current_user), class: "dropdown-item", method: :delete, data: { confirm: "Are you sure?" } %>
+                        </li>
                     </ul>
                 </li>
             <% else %>
