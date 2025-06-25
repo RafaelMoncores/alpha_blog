@@ -27,3 +27,7 @@ cable:
 queue:
   <<: *default # Também herda do "default"
   url: <%= ENV['DATABASE_URL'] %> # Aponta para o mesmo banco de dados do Heroku
+
+cache:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
