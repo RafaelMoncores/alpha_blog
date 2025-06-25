@@ -22,8 +22,18 @@
                 <li class="nav-item">
                     <%= link_to "Logout", logout_path, class: "nav-link", method: :delete%>
                 </li>
-                <li class="nav-item">
-                    <%= link_to current_user.username, user_path(current_user), class: "nav-link"%>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile [<%= current_user.username %>]
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li>
+                            <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+                        </li>
+                        <li>
+                            <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+                        </li>
+                    </ul>
                 </li>
             <% else %>
                 <li class="nav-item">
