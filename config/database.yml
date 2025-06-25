@@ -1,33 +1,29 @@
-# config/database.yml
-
-# Para desenvolvimento e teste, você pode manter o SQLite com o padrão ou configurá-lo.
-# Se você não precisar de um "default" global, pode removê-lo.
-# Neste exemplo, vamos manter para development e test, mas configurar production separadamente.
-development:
-  adapter: sqlite3
+# Configurações padrão para todos os ambientes.
+# O Rails usa esta seção para herdar configurações comuns.
+default: &default
+  adapter: postgresql # Mude para postgresql aqui, pois Heroku usa Postgres
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+
+development:
+  <<: *default # Herda as configurações do "default"
+  adapter: sqlite3 # Para desenvolvimento local, SQLite ainda é ok
   database: storage/development.sqlite3
 
 test:
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  <<: *default # Herda as configurações do "default"
+  adapter: sqlite3 # Para teste local, SQLite ainda é ok
   database: storage/test.sqlite3
 
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  # O Heroku injeta a variável DATABASE_URL, que já aponta para o PostgreSQL.
-  # Explicitamente definimos o adaptador para garantir.
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default # Herda as configurações do "default"
+  url: <%= ENV['DATABASE_URL'] %> # O Heroku fornece esta URL para o PostgreSQL
+  # sslmode: require # Descomente se tiver problemas de conexão SSL no Heroku, mas geralmente não é necessário com o DATABASE_URL padrão.
 
 cable:
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default # Também herda do "default"
+  url: <%= ENV['DATABASE_URL'] %> # Aponta para o mesmo banco de dados do Heroku
 
-queue: 
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+queue:
+  <<: *default # Também herda do "default"
+  url: <%= ENV['DATABASE_URL'] %> # Aponta para o mesmo banco de dados do Heroku
