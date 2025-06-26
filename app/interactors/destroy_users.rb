@@ -1,5 +1,5 @@
 class DestroyUsers
-  inclue Interactor
+  include Interactor
 
   def call
     user_to_destroy = context.user_to_destroy
