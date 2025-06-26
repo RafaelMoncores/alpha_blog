@@ -21,9 +21,9 @@ class ArticlesController < ApplicationController
   def edit
   end
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
-    if @article.save
+    result = CreateArticle.call(article_params: article_params, current_user: current_user)
+    @article = result.article
+    if result.success?
       flash[:notice] = "Article was successfully created."
       redirect_to @article
     else
@@ -31,8 +31,7 @@ class ArticlesController < ApplicationController
     end
   end
   def update
-    @article.update(article_params)
-    if @article.save # .save após .update é redundante a menos que você tenha validações ou callbacks específicos
+    if @article.update(article_params) # .save após .update é redundante a menos que você tenha validações ou callbacks específicos
       flash[:notice] = "Article was successfully updated."
       redirect_to @article
     else
