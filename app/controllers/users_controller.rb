@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
 def destroy
   # Chama o interactor, passando o usuário a ser destruído e o usuário logado
-  result = DestroyUser.call(user_to_destroy: @user, current_user: current_user)
+  result = DestroyUsers.call(user_to_destroy: @user, current_user: current_user)
 
   if result.success?
     # Se o interactor sinalizar para limpar a sessão
