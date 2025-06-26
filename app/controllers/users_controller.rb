@@ -12,12 +12,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id # Log the user in after successful signup
-      flash[:notice] = "Welcome to the Alpha Blog #{@user.username}, you have successfully signed up"
+    # Chama o interactor, passando os user_params através do contexto
+    result = CreateUserAndLogin.call(user_params: user_params)
+
+    if result.success?
+      # Se o interactor for um sucesso, aplicamos as mudanças na sessão e no flash
+      session[:user_id] = result.session[:user_id] # Pega o user_id do contexto
+      flash[:notice] = result.flash_notice        # Pega a mensagem de flash do contexto
       redirect_to articles_path
     else
+      @user = result.user # Pega o objeto user do contexto, que contém os erros e os dados preenchidos
+      flash.now[:alert] = result.errors.join(", ") # Mostra as mensagens de erro
       render "new"
     end
   end
@@ -38,7 +43,9 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+
   private
+
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end

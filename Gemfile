@@ -18,6 +18,8 @@ gem "jbuilder"
 
 gem "pg", "1.6.0.rc1" # Use PostgreSQL as the database for Active Record
 
+gem "interactor", "~> 3.0"
+
 # Gemfile
 gem "cssbundling-rails"
 gem "bootstrap", "~> 5.3" # Use a versão mais recente do Bootstrap 5
