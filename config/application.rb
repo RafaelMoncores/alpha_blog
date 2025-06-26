@@ -23,5 +23,9 @@ module AlphaBlog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.autoload_paths << Rails.root.join("app", "interactors") # ou config.eager_load_paths << se for produção/eager_load
+
+    # Recomenda-se também para produção (eager_load)
+    config.eager_load_paths << Rails.root.join("app", "interactors")
   end
 end
