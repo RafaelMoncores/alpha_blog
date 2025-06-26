@@ -27,12 +27,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    session[:user_id] = nil if current_user == @user
-    flash[:notice] = "Account and all associated articles have been deleted."
+def destroy
+  # Chama o interactor, passando o usuário a ser destruído e o usuário logado
+  result = DestroyUser.call(user_to_destroy: @user, current_user: current_user)
+
+  if result.success?
+    # Se o interactor sinalizar para limpar a sessão
+    session[:user_id] = nil if result.should_clear_session
+    flash[:notice] = result.flash_notice
     redirect_to root_path
+  else
+    flash[:alert] = result.errors.join(", ")
+    redirect_to @user # Ou outra página apropriada para lidar com a falha
   end
+end
+
   def edit
   end
   def update
