@@ -12,6 +12,13 @@ class CategoriesController < ApplicationController
     end
   end
   def index
+    if params[:search]
+      # Se houver busca, pagine os resultados da busca
+      @categories = Category.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(3)
+    else
+      # Caso contrário, pagine todos os artigos
+      @categories = Category.paginate(page: params[:page], per_page: 5)
+    end
   end
   def show
     @category = Category.find(params[:id])
