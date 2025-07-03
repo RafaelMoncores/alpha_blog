@@ -3,9 +3,13 @@
   <div class="row justify-content-center">
     <div class="col-8 mt-4">
       <div class="card text-center shadow-lg mb-5 bg-body-tertiary rounded">
-        <p class="card-header font-italic">
+        <div class="card-header font-italic">
           by <%= @article.user.username %>
-        </p>
+          <br>
+          <% if @article.categories.any? %>
+            <%= render @article.categories %>
+          <% end %>
+        </div>
         <div class="card-body">
           <div class="card-text"><%= simple_format(@article.description) %></div>
           <% if logged_in? && (@article.user == current_user || current_user.admin?) %>  

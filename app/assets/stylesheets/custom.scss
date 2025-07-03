@@ -51,6 +51,15 @@ body {
   padding: 10px 0;
 }
 
+.badge.rounded-pill.bg-info {
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave para o efeito de hover */
+}
+
+a.badge.rounded-pill.bg-info:hover {
+  background-color: #0d6efd !important;
+}
+
 
 .flickr_pagination {
   text-align: center;
