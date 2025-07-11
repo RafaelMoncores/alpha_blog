@@ -18,7 +18,7 @@ gem "jbuilder"
 
 gem "pg", "1.6.0.rc1" # Use PostgreSQL as the database for Active Record
 
-gem "interactor", "~> 3.0"
+gem "interactor", "~> 3.2"
 
 # Gemfile
 gem "cssbundling-rails"
