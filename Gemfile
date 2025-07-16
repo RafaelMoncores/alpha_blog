@@ -16,7 +16,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "pg", "1.6.0.rc1" # Use PostgreSQL as the database for Active Record
+gem "pg", "1.6.0.rc2" # Use PostgreSQL as the database for Active Record
 
 gem "interactor", "~> 3.0"
 
